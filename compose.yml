@@ -1,0 +1,40 @@
+version: '3'
+services:
+  database:
+   build: 
+    context: ./db
+    dockerfile: dbdockerfile
+   command: --default-authentication-plugin=mysql_native_password
+   networks:
+     - backend
+  backend:
+   build:
+    context: ./backend
+    dockerfile: backenddockerfile
+   restart: always
+   ports:
+   - "5000:5000"
+   depends_on:
+     - database
+   networks:
+     - backend
+     - frontend
+  html:
+   build:
+    context: ./nginx
+    dockerfile: htmldockerfile
+   restart: always
+   ports:
+     - "443:443"
+     - "80:80"
+   depends_on:
+     - backend
+   networks:
+     - frontend
+
+networks:
+  frontend:
+   driver: bridge
+
+  backend:
+   driver: bridge

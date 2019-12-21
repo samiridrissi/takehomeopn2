@@ -1,1 +1,8 @@
-dizz
+FROM python:3.7
+
+RUN pip3 install flask_mysqldb
+
+COPY transport.py /home/
+
+CMD python3 /home/transport.py
+
