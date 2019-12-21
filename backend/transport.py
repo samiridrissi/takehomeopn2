@@ -6,7 +6,7 @@ import json
 app = Flask(__name__)
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_DB'] = 'credentials'
-app.config['MYSQL_HOST'] = 'db_container'
+app.config['MYSQL_HOST'] = 'database'
 mysql = MySQL(app)
 
 @app.route('/person', methods=['POST'])
