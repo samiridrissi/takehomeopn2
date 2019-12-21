@@ -18,7 +18,7 @@ def insert():
 	dbConnection = mysql.connect
 	dbCursor = dbConnection.cursor()
 
-	dbCursor.execute("INSERT INTO credentialstable (FirstName, LastName) VALUES ('" + 
+	dbCursor.execute("INSERT INTO credentialstable (Firstname, Lastname) VALUES ('" + 
 			first_name + "','" + last_name + "')")
 	dbConnection.commit()
 
